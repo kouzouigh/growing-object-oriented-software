@@ -1,0 +1,6 @@
+Go to https://github.com/sameersbn/docker-openfire and create a container with the following command:
+
+docker run --name openfire --hostname openfire -d --restart=always \
+  --publish 9090:9090 --publish 5222:5222 --publish 7777:7777 \
+  --volume ~/data/docker/openfire:/var/lib/openfire \
+  sameersbn/openfire:3.10.3-19

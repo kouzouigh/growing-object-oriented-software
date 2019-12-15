@@ -1,0 +1,53 @@
+Testsuite: test.endtoend.auctionsniper.AuctionSniperEndToEndTest
+Tests run: 1, Failures: 2, Errors: 0, Skipped: 0, Time elapsed: 4,101 sec
+
+Testcase: sniperJoinsAuctionUntilAuctionCloses took 4,09 sec
+	FAILED
+
+Tried to look for...
+    exactly 1 JLabel (with name "Sniper status name")
+    in exactly 1 JFrame (with name "Auction Sniper Main" and showing on screen)
+    in all top level windows
+and check that its label text is "JOINING"
+but...
+    all top level windows
+    contained 0 JFrame (with name "Auction Sniper Main" and showing on screen)
+junit.framework.AssertionFailedError: 
+Tried to look for...
+    exactly 1 JLabel (with name "Sniper status name")
+    in exactly 1 JFrame (with name "Auction Sniper Main" and showing on screen)
+    in all top level windows
+and check that its label text is "JOINING"
+but...
+    all top level windows
+    contained 0 JFrame (with name "Auction Sniper Main" and showing on screen)
+	at com.objogate.wl.PollingProber.check(PollingProber.java:38)
+	at com.objogate.wl.swing.driver.ComponentDriver.check(ComponentDriver.java:74)
+	at com.objogate.wl.swing.driver.ComponentDriver.has(ComponentDriver.java:142)
+	at com.objogate.wl.swing.driver.JLabelDriver.hasText(JLabelDriver.java:30)
+	at test.endtoend.auctionsniper.AuctionSniperDriver.showsSniperStatus(AuctionSniperDriver.java:27)
+	at test.endtoend.auctionsniper.ApplicationRunner.startBiddingIn(ApplicationRunner.java:32)
+	at test.endtoend.auctionsniper.AuctionSniperEndToEndTest.sniperJoinsAuctionUntilAuctionCloses(AuctionSniperEndToEndTest.java:14)
+
+	FAILED
+
+Tried to look for...
+    exactly 1 JFrame (with name "Auction Sniper Main" and showing on screen)
+    in all top level windows
+but...
+    all top level windows
+    contained 0 JFrame (with name "Auction Sniper Main" and showing on screen)
+junit.framework.AssertionFailedError: 
+Tried to look for...
+    exactly 1 JFrame (with name "Auction Sniper Main" and showing on screen)
+    in all top level windows
+but...
+    all top level windows
+    contained 0 JFrame (with name "Auction Sniper Main" and showing on screen)
+	at com.objogate.wl.PollingProber.check(PollingProber.java:38)
+	at com.objogate.wl.swing.driver.ComponentDriver.check(ComponentDriver.java:74)
+	at com.objogate.wl.swing.driver.ComponentDriver.perform(ComponentDriver.java:157)
+	at com.objogate.wl.swing.driver.JFrameDriver.dispose(JFrameDriver.java:65)
+	at test.endtoend.auctionsniper.ApplicationRunner.stop(ApplicationRunner.java:41)
+	at test.endtoend.auctionsniper.AuctionSniperEndToEndTest.stopApplication(AuctionSniperEndToEndTest.java:26)
+
