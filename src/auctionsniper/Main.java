@@ -19,9 +19,9 @@ public class Main {
 
     public static final String AUCTION_RESOURCE = "Auction";
     public static final String ITEM_ID_AS_LOGIN = "auction-%s";
-    public static final String AUCTION_ID_FORMAT =
-            ITEM_ID_AS_LOGIN + "@%s/" + AUCTION_RESOURCE;
+    public static final String AUCTION_ID_FORMAT = ITEM_ID_AS_LOGIN + "@%s/" + AUCTION_RESOURCE;
 
+    private Chat notToBeGCd;
     private MainWindow ui;
 
     public Main() throws Exception {
@@ -30,21 +30,34 @@ public class Main {
 
     public static void main(String... args) throws Exception {
         Main main = new Main();
-        XMPPConnection connection = connectTo(
+        main.joinAuction(
+            connection(args[ARG_HOSTNAME], args[ARG_USERNAME], args[ARG_PASSWORD]), args[ARG_ITEM_ID]
+        );
+
+        XMPPConnection connection = connection(
             args[ARG_HOSTNAME], args[ARG_USERNAME], args[ARG_PASSWORD]
         );
+    }
+
+    private void joinAuction(XMPPConnection connection, String itemId) throws XMPPException {
         Chat chat = connection.getChatManager().createChat(
-                auctionId(args[ARG_ITEM_ID], connection), new MessageListener() {
+            auctionId(itemId, connection), new MessageListener() {
                     @Override
                     public void processMessage(Chat chat, Message message) {
-                        // nothing yet
+                        SwingUtilities.invokeLater(new Runnable() {
+                            @Override
+                            public void run() {
+                                ui.showStatus(MainWindow.STATUS_LOST);
+                            }
+                        });
                     }
                 }
         );
+        this.notToBeGCd = chat;
         chat.sendMessage(new Message());
     }
 
-    private static XMPPConnection connectTo(String hostname, String username, String password) throws XMPPException {
+    private static XMPPConnection connection(String hostname, String username, String password) throws XMPPException {
         XMPPConnection connection = new XMPPConnection(hostname);
         connection.connect();
         connection.login(username, password, AUCTION_RESOURCE);
