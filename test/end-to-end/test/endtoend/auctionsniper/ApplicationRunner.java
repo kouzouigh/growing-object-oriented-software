@@ -1,17 +1,17 @@
 package test.endtoend.auctionsniper;
 
 import auctionsniper.Main;
+import auctionsniper.ui.MainWindow;
 
 /**
  * Hide all the messy code for manipulating Swing
  */
 public class ApplicationRunner {
 
+    public static final String XMPP_HOSTNAME = "localhost";
     public static final String SNIPER_ID = "sniper";
     public static final String SNIPER_PASSWORD = "sniper";
-    public static final String XMPP_HOSTNAME = "localhost";
-    private static final String STATUS_JOINING = "JOINING";
-    private static final String STATUS_LOST = "LOST";
+    private static final String STATUS_LOST = "Lost";
     private AuctionSniperDriver driver;
 
     public void startBiddingIn(FakeAuctionServer auction) {
@@ -29,7 +29,7 @@ public class ApplicationRunner {
         thread.setDaemon(true);
         thread.start();
         driver = new AuctionSniperDriver(1000);
-        driver.showsSniperStatus(STATUS_JOINING);
+        driver.showsSniperStatus(MainWindow.STATUS_JOINIG);
     }
 
     public void showSniperHasLostAuction() {

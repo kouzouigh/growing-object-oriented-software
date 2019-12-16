@@ -7,8 +7,8 @@ import java.awt.*;
 public class MainWindow extends JFrame {
 
     public static final String MAIN_WINDOW_NAME = "Auction Sniper Main";
-    private static final String STATUS_JOINIG = "Joining";
-    private static final String SNIPER_STATUS_NAME = "sniper status";
+    public static final String STATUS_JOINIG = "Joining";
+    public static final String SNIPER_STATUS_NAME = "sniper status";
     private final JLabel sniperStatus = createLabel(STATUS_JOINIG);
 
     public MainWindow() {
