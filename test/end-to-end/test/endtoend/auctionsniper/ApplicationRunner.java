@@ -10,9 +10,10 @@ import static auctionsniper.ui.MainWindow.STATUS_LOST;
  */
 public class ApplicationRunner {
 
-    public static final String XMPP_HOSTNAME = "localhost";
+    public static final String XMPP_HOSTNAME = "openfiretest.com";
     public static final String SNIPER_ID = "sniper";
     public static final String SNIPER_PASSWORD = "sniper";
+    public static final String SNIPER_XMPP_ID = SNIPER_ID + "@" + XMPP_HOSTNAME + "/Auction";;
     private AuctionSniperDriver driver;
 
     public void startBiddingIn(FakeAuctionServer auction) {
@@ -30,7 +31,11 @@ public class ApplicationRunner {
         thread.setDaemon(true);
         thread.start();
         driver = new AuctionSniperDriver(1000);
-        driver.showsSniperStatus(MainWindow.STATUS_JOINIG);
+        driver.showsSniperStatus(MainWindow.STATUS_JOINING);
+    }
+
+    public void hasShownSniperIsBidding() {
+        driver.showsSniperStatus(MainWindow.STATUS_BIDDING);
     }
 
     public void showSniperHasLostAuction() {
