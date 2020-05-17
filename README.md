@@ -2,7 +2,7 @@
 ### Openfire
 execute this command for openfire setup in docker:
 
-`docker run --name openfire --hostname openfiretest.com -d --restart=always --publish 9090:9090 --publish 5222:5222 --publish 7777:7777 --volume ~/data/docker/openfire:/var/lib/openfire sameersbn/openfire:3.10.3-19`
+`docker run --name openfire -d --restart=always --publish 9090:9090 --publish 5222:5222 --publish 7777:7777 --volume ~/git/wil/openfire:/var/lib/openfire gizmotronic/openfire:4.2.3`
 
 #### Setup openfire
 In first time you should configure openfire, follow this steps:
